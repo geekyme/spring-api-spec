@@ -3,15 +3,16 @@ info:
   title: Book Shop
   description: Book CRUD API.
   version: 1.0.0
+  contact: {}
 servers:
-- url: /v2
+  - url: /v2
 paths:
   /book:
     get:
       summary: Get Books
       operationId: getBooks
       responses:
-        200:
+        '200':
           description: successful operation
           content:
             application/json:
@@ -19,6 +20,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Book'
+      tags:
+        - Book
+      description: Test
     post:
       summary: Add a Book
       operationId: addBook
@@ -30,13 +34,16 @@ paths:
               $ref: '#/components/schemas/Book'
         required: true
       responses:
-        200:
+        '200':
           description: Book Added
           content:
             application/json:
               schema:
                 type: string
       x-codegen-request-body-name: book
+      tags:
+        - Book
+      description: Test
 components:
   schemas:
     Book:
@@ -51,3 +58,7 @@ components:
         author:
           type: string
           example: Brandon Sanderson
+      x-tags:
+        - Book
+tags:
+  - name: Book
